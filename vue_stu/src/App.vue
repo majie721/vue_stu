@@ -1,64 +1,18 @@
 <template>
   <div id="app">
-    <div>
+    <div style="background-color: #fff">
       <img class="home-header-img" src="http://mfsk.com/themes/mui/img/index_header.png">
     </div>
     <div style="margin-top: 0px">
-        <li style="list-style: none;height: 30px;border-bottom:1px solid #F6F6F6;padding-left: 20px">
+        <li>
           <span>热门业务</span>
         </li>
         <div class="grid">
-          <a href="" class="grid-a">
+          <a href="" v-for="(item,index) in hotBusinessData" class="grid-a" :key="index">
             <div class="grid-a-middle">
-              <img src="http://cdn.91yunma.cn/themes/mui/img/icon_wechat/point_2.png">
+              <img class="grid-a-middle-img" :src="item.src">
               <div>
-                <span>航空里程</span>
-                <p>(开发中)</p>
-              </div>
-            </div>
-          </a>
-          <a href="" class="grid-a">
-            <div class="grid-a-middle">
-              <img src="http://cdn.91yunma.cn/themes/mui/img/icon_wechat/point_2.png">
-              <div>
-                <span>航空里程</span>
-                <p>(开发中)</p>
-              </div>
-            </div>
-          </a>
-          <a href="" class="grid-a">
-            <div class="grid-a-middle">
-              <img src="http://cdn.91yunma.cn/themes/mui/img/icon_wechat/point_2.png">
-              <div>
-                <span>航空里程</span>
-                <p>(开发中)</p>
-              </div>
-            </div>
-          </a>
-          <a href="" class="grid-a">
-            <div class="grid-a-middle">
-              <img src="http://cdn.91yunma.cn/themes/mui/img/icon_wechat/point_2.png">
-              <div>
-                <span>航空里程</span>
-                <p>(开发中)</p>
-              </div>
-            </div>
-          </a>
-          <a href="" class="grid-a">
-            <div class="grid-a-middle">
-              <img src="http://cdn.91yunma.cn/themes/mui/img/icon_wechat/point_2.png">
-              <div>
-                <span>航空里程</span>
-                <p>(开发中)</p>
-              </div>
-            </div>
-          </a>
-          <a href="" class="grid-a">
-            <div class="grid-a-middle">
-              <img src="http://cdn.91yunma.cn/themes/mui/img/icon_wechat/point_2.png">
-              <div>
-                <span>航空里程</span>
-                <p>(开发中)</p>
+                <span>{{item.title}}</span>
               </div>
             </div>
           </a>
@@ -66,123 +20,34 @@
     </div>
     <div style="clear: both"></div>
     <div style="margin-top: 20px">
-      <li style="list-style: none;height: 30px;border-bottom:1px solid #F6F6F6;padding-left: 20px">
-        <span>热门业务</span>
+      <li>
+        <span>话费/石化/商超/代金券/游戏</span>
       </li>
       <div class="grid">
-        <a href="" class="grid-a">
+        <a v-for="(item,index) in tab2Data" :key="index" href="" class="grid-a">
           <div class="grid-a-middle">
-            <img src="http://cdn.91yunma.cn/themes/mui/img/icon_wechat/point_2.png">
+            <img class="tab-img" :src="item.img">
             <div>
-              <span>航空里程</span>
-              <p>(开发中)</p>
+              <span>{{item.title}}</span>
+              <p v-if ="item.status==1" >(开发中)</p>
             </div>
           </div>
         </a>
-        <a href="" class="grid-a">
-          <div class="grid-a-middle">
-            <img src="http://cdn.91yunma.cn/themes/mui/img/icon_wechat/point_2.png">
-            <div>
-              <span>航空里程</span>
-              <p>(开发中)</p>
-            </div>
-          </div>
-        </a>
-        <a href="" class="grid-a">
-          <div class="grid-a-middle">
-            <img src="http://cdn.91yunma.cn/themes/mui/img/icon_wechat/point_2.png">
-            <div>
-              <span>航空里程</span>
-              <p>(开发中)</p>
-            </div>
-          </div>
-        </a>
-        <a href="" class="grid-a">
-          <div class="grid-a-middle">
-            <img src="http://cdn.91yunma.cn/themes/mui/img/icon_wechat/point_2.png">
-            <div>
-              <span>航空里程</span>
-              <p>(开发中)</p>
-            </div>
-          </div>
-        </a>
-        <a href="" class="grid-a">
-          <div class="grid-a-middle">
-            <img src="http://cdn.91yunma.cn/themes/mui/img/icon_wechat/point_2.png">
-            <div>
-              <span>航空里程</span>
-              <p>(开发中)</p>
-            </div>
-          </div>
-        </a>
-        <a href="" class="grid-a">
-          <div class="grid-a-middle">
-            <img src="http://cdn.91yunma.cn/themes/mui/img/icon_wechat/point_2.png">
-            <div>
-              <span>航空里程</span>
-              <p>(开发中)</p>
-            </div>
-          </div>
-        </a>
+
       </div>
     </div>
     <div style="clear: both"></div>
-    <div style="margin-top: 20px">
-      <li style="list-style: none;height: 30px;border-bottom:1px solid #F6F6F6;padding-left: 20px">
-        <span>热门业务</span>
+    <div style="margin-top: 20px;">
+      <li>
+        <span>积分来换钱</span>
       </li>
       <div class="grid">
-        <a href="" class="grid-a">
+        <a v-for="(item,index) in points" :key="index" href="" class="grid-a">
           <div class="grid-a-middle">
-            <img src="http://cdn.91yunma.cn/themes/mui/img/icon_wechat/point_2.png">
+            <img class="tab-img" :src="item.img">
             <div>
-              <span>航空里程</span>
-              <p>(开发中)</p>
-            </div>
-          </div>
-        </a>
-        <a href="" class="grid-a">
-          <div class="grid-a-middle">
-            <img src="http://cdn.91yunma.cn/themes/mui/img/icon_wechat/point_2.png">
-            <div>
-              <span>航空里程</span>
-              <p>(开发中)</p>
-            </div>
-          </div>
-        </a>
-        <a href="" class="grid-a">
-          <div class="grid-a-middle">
-            <img src="http://cdn.91yunma.cn/themes/mui/img/icon_wechat/point_2.png">
-            <div>
-              <span>航空里程</span>
-              <p>(开发中)</p>
-            </div>
-          </div>
-        </a>
-        <a href="" class="grid-a">
-          <div class="grid-a-middle">
-            <img src="http://cdn.91yunma.cn/themes/mui/img/icon_wechat/point_2.png">
-            <div>
-              <span>航空里程</span>
-              <p>(开发中)</p>
-            </div>
-          </div>
-        </a>
-        <a href="" class="grid-a">
-          <div class="grid-a-middle">
-            <img src="http://cdn.91yunma.cn/themes/mui/img/icon_wechat/point_2.png">
-            <div>
-              <span>航空里程</span>
-              <p>(开发中)</p>
-            </div>
-          </div>
-        </a>
-        <a href="" class="grid-a">
-          <div class="grid-a-middle">
-            <img src="http://cdn.91yunma.cn/themes/mui/img/icon_wechat/point_2.png">
-            <div>
-              <span>航空里程</span>
-              <p>(开发中)</p>
+              <span>{{item.title}}</span>
+              <p v-if="item.status==1">(开发中)</p>
             </div>
           </div>
         </a>
@@ -205,15 +70,58 @@
 <script>
 export default {
   name: 'App',
-  data:function() {
+    data: function () {
         return {
-            active: 0
+            active: 0,
+            hotBusinessData: '',
+            tab2Data:'',
+            points:''
+        }
+    },
+    created: function () {
+        this.hotBusiness();
+    },
+
+    methods: {
+        hotBusiness: function () {
+            this.$axios.get('home/index')
+                .then(
+                    (res)=> (this.hotBusinessData = res.data.data.hot,
+                        this.tab2Data = res.data.data.tab,
+                        this.points = res.data.data.points
+                    )
+                )
+                .catch(function (error) {
+                    console.log(error)
+                })
+
         }
     }
+
 }
 </script>
 
 <style scoped>
+  #app{
+    background-color: rgb(239, 239, 244);
+    padding-bottom: 200px;
+  }
+
+
+
+  #app li{
+    list-style: none;
+    height: 30px;
+    border-bottom:1px solid #F6F6F6;
+    padding-left: 20px;
+    background-color: #fff
+  }
+
+  #app li span{
+    line-height: 30px;
+    font-size: 14px;
+  }
+
   .home-header-img{
     width: 100%;
   }
@@ -233,5 +141,22 @@ export default {
     font-size: 12px;
     border-right: 1px solid #F6F6F6;
     border-bottom: 1px solid #F6F6F6;
+    color: black;
+    background-color: #fff
+  }
+
+  .grid-a-middle p{
+    margin: 0px;
+  }
+
+  .grid-a-middle-img{
+    height: 50px;
+    line-height: 20px;
+    border: 0;
+  }
+
+  .tab-img{
+    height: 50px;
+    line-height: 20px
   }
 </style>
