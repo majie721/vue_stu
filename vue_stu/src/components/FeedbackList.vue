@@ -1,51 +1,51 @@
 <template>
     <div >
-        <van-nav-bar class="mf-nav-bar" :title="bank_info.type+'记录'"/>
+        <van-nav-bar class="mf-nav-bar" title="我的工单"/>
         <van-tabs @click="onClickBar"  type="card"  v-model="s_active">
-            <van-tab title="全部"></van-tab>
-            <van-tab title="交易成功"></van-tab>
-            <van-tab title="交易失败"></van-tab>
+            <van-tab title="卡密工单"></van-tab>
+            <van-tab title="积分工单"></van-tab>
         </van-tabs>
-<!--
         <van-tabs @click="onClickTime"  v-model="q_active">
-            <van-tab title="近五天回收记录"></van-tab>
-            <van-tab title="五天前回收记录"></van-tab>
-        </van-tabs>-->
+            <van-tab title="全部"></van-tab>
+            <van-tab title="处理中"></van-tab>
+            <van-tab title="处理完成"></van-tab>
+            <van-tab title="已关闭"></van-tab>
+        </van-tabs>
 
         <van-panel v-for="(item,index) in lists"
                    :key="index" :title="'订单ID:'+item.id"
                    :desc="item.create_time*1000 |convertTime('YYYY-M-D H:mm')"
                    :status="item.status">
             <div style="padding: 0px 15px">
-                <div v-if="item.order_type == 1">
-                    <h5 >转让积分：{{item.point}}</h5>
-                </div>
+                <!--<div v-if="item.order_type == 1">-->
+                <!--<h5 >转让积分：{{item.point}}</h5>-->
+                <!--</div>-->
 
-                <div v-else-if="item.order_type == 2">
-                    <h5>充值金额：{{item.amount}}</h5>
-                    <h5>充值号码：{{item.target}}</h5>
-                </div>
+                <!--<div v-else-if="item.order_type == 2">-->
+                <!--<h5>充值金额：{{item.amount}}</h5>-->
+                <!--<h5>充值号码：{{item.target}}</h5>-->
+                <!--</div>-->
 
-                <div v-else-if="item.order_type == 3">
-                    <h5>转让号码：{{item.phone}}</h5>
-                    <h5>总 面 值：{{item.coupon_datas}}</h5>
-                </div>
+                <!--<div v-else-if="item.order_type == 3">-->
+                <!--<h5>转让号码：{{item.phone}}</h5>-->
+                <!--<h5>总 面 值：{{item.coupon_datas}}</h5>-->
+                <!--</div>-->
 
-                <h5>
-                    结算价格：
-                    {{item.amount}}
-                </h5>
-                <h5>
-                    处&nbsp;理&nbsp;提&nbsp;示：{{item.remark}}
-                </h5>
+                <!--<h5>-->
+                <!--结算价格：-->
+                <!--{{item.amount}}-->
+                <!--</h5>-->
+                <!--<h5>-->
+                <!--处&nbsp;理&nbsp;提&nbsp;示：{{item.remark}}-->
+                <!--</h5>-->
 
             </div>
             <div slot="footer">
 
-                <van-button v-if="(item.state == 9 && item.order_type == 3)"  size="mini"  type="info">券码明细</van-button>
+                <van-button v-if="(item.state == 9 && item.order_type == 3)"  size="small"  type="info">券码明细</van-button>
 
-                <van-button size="mini" v-if="item.state == 8 && item.feedback_id>0" type="info">查看工单</van-button>
-                <van-button size="mini" v-if="item.state == 8 && item.feedback_id ==='0'" type="primary" :to="{name:'feedback',query:{id:item.id,f_type:'points',type:type}}">申请工单</van-button>
+                <van-button size="small" v-if="item.state == 8 && item.feedback_id>0" type="info">查看工单</van-button>
+                <van-button size="small" v-if="item.state == 8 && item.feedback_id ==='0'" type="warning">申请工单</van-button>
                 <!--<span v-if="item.status==8">-->
 
                 <!--</span>-->
@@ -71,10 +71,8 @@
 </template>
 
 <script>
-
     export default {
-        name: "pointsHistory",
-        components:{},
+        name: "FeedbackList",
         data:function(){
             return{
                 s_active :0,
@@ -101,8 +99,7 @@
                         name: '禁用选项',
                         disabled: true
                     }
-                ],
-                type:this.$route.query.id
+                ]
             }
         },
         created() {
@@ -134,36 +131,36 @@
                     })
             },
             onClickBar:function (index, title) {
-                let status = 0;
-                switch (index) {
-                    case 0:
-                        status = 0;
-                        break;
-                    case 1:
-                        status = 9;
-                        break;
-                    case 2:
-                        status =8;
-                        break;
-                    default:
-                        status=0;
-                        break;
-                }
-                let query ={
-                    id:this.$route.query.id,
-                    status:status,
-                    // recently:this.$route.query.recently?this.$route.query.recently:0,
-                }
-                this.$router.push({name:'pointsHistory',query:query});
+                // let status = 0;
+                // switch (index) {
+                //     case 0:
+                //         status = 0;
+                //         break;
+                //     case 1:
+                //         status = 9;
+                //         break;
+                //     case 2:
+                //         status =8;
+                //         break;
+                //     default:
+                //         status=0;
+                //         break;
+                // }
+                // let query ={
+                //     id:this.$route.query.id,
+                //     status:status,
+                //     // recently:this.$route.query.recently?this.$route.query.recently:0,
+                // }
+                // this.$router.push({name:'pointsHistory',query:query});
             },
             onClickTime:function(index, title){
-                let recently = index;
-                let query ={
-                    id:this.$route.query.id,
-                    status:this.$route.query.status?this.$route.query.status:0,
-                    // recently:recently
-                }
-                this.$router.push({name:'pointsHistory',query:query});
+                // let recently = index;
+                // let query ={
+                //     id:this.$route.query.id,
+                //     status:this.$route.query.status?this.$route.query.status:0,
+                //     // recently:recently
+                // }
+                // this.$router.push({name:'pointsHistory',query:query});
             },
             onSelect(item) {
                 // 点击选项时默认不会关闭菜单，可以手动关闭
@@ -233,9 +230,5 @@
         min-width: 60px;
         font-size: 12px;
         line-height: 25px;
-    }
-
-    .van-panel__footer div {
-      text-align: right;
     }
 </style>

@@ -4,9 +4,9 @@
     <router-view />
     <van-tabbar class="mf_tabbar" v-model="active">
       <van-tabbar-item icon="home-o" to="/home">首页</van-tabbar-item>
-      <van-tabbar-item icon="search" to="/history" dot>交易记录</van-tabbar-item>
-      <van-tabbar-item icon="balance-o" info="5">提现</van-tabbar-item>
-      <van-tabbar-item icon="user-o" info="20">我</van-tabbar-item>
+      <van-tabbar-item icon="search" to="/history">交易记录</van-tabbar-item>
+      <van-tabbar-item icon="balance-o" to="/flow" dot>提现</van-tabbar-item>
+      <van-tabbar-item icon="user-o"  to="/user" >我</van-tabbar-item> <!--info="20"-->
     </van-tabbar>
     </div>
 </template>
